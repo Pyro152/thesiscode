@@ -1,0 +1,28 @@
+cd ${HOME}
+
+source spack/share/spack/setup-env.sh
+spack external find
+spack compiler find
+
+model=GCClassic
+scope_dir="${model}/spack"
+scope_args="-C ${scope_dir}"
+
+spack ${scope_args} install gcc     # Install GNU Compiler
+
+spack compiler add $(spack location -i gcc)     # Register GNU Compiler Collection
+
+# Load esmf, hdf5, netcdf-c, netcdf-fortran, openmpi
+spack load esmf%gcc^openmpi
+spack load cdo%gcc^openmpi
+spack load nco%gcc^openmpi
+spack load flex
+
+
+export OMP_NUM_THREADS=15
+
+ulimit -s unlimited
+export OMP_STACKSIZE=1.9G
+
+#this setup allocates 15 cores and 15*1.9=28.5 GB ram, leaving 1 core, 4.2 GB to system
+
