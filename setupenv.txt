@@ -22,7 +22,7 @@ spack load flex
 export OMP_NUM_THREADS=15
 
 ulimit -s unlimited
-export OMP_STACKSIZE=1.9G
+export OMP_STACKSIZE=1900m
 
 #this setup allocates 15 cores and 15*1.9=28.5 GB ram, leaving 1 core, 4.2 GB to system
 
