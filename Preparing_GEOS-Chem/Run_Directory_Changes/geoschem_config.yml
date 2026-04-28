@@ -129,6 +129,7 @@ operations:
       fill_negative_values: true      # GEOS-Chem Classic only
       iord_jord_kord: [3, 3, 7]       # GEOS-Chem Classic only
     transported_species:
+      - ALUMINA
       - ACET
       - ACTA
       - ACR

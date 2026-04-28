@@ -58,6 +58,17 @@ SECTION 1: CREATE RUN DIRECTORY
 
 SECTION 2: ADD ALUMINA
 
->>
+>> add alumina tracer in geoschem_config.yml, line 132
+>> add alumina species in species_database.yml, lines 4 - 23
+>> set case 6 in aerosol_mod.F90, line 2506 - 2510
+     --path from run directory CodeDir/src/GEOS-Chem/GeosCore/aerosol_mod.F90
+     --this is linked symbolically to your GCClassic directory, making the path
+       from this README.md to aerosol_mod.F90 ./GCClassic/src/GEOS-Chem/GeosCore/aerosol_mod.F90
+     --also, this section assumes your still working in the run directory
+>> add alumina as a species in the first Restart file 
+     --alumina3.py does this
+>> re-compile and run to verify functionality
+
+
 
     

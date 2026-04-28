@@ -1,6 +1,27 @@
 # GEOS-Chem Species Database
 # Core species only (neglecting microphysics)
 # NOTE: Anchors must be defined before any variables that reference them.
+ALUMINA:
+  FullName: Alumina aerosol
+  Formula: Al2O3
+  Is_Advected: true
+  Is_Aerosol: true
+  MW_g: 101.96
+  DD_DvzAerSnow: 0.03
+  DD_DvzMinVal: [0.01, 0.01]
+  DD_F0: 0.0
+  DD_Hstar: 0.0
+  Density: 3990.0
+  Radius: 1.4e-7
+  Is_DryDep: true
+  Is_HygroGrowth: true
+  Is_Photolysis: true
+  Is_WetDep: true
+  WD_AerScavEff: 1.0
+  WD_KcScaleFac: [1.0, 0.5, 1.0]
+  WD_RainoutEff: [1.0, 0.0, 1.0]
+  WD_RainoutEff_Luo: [0.4, 0.0, 1.0]
+
 A3O2:
   Formula: CH3CH2CH2OO
   FullName: Primary peroxy radical from C3H8
