@@ -3,7 +3,7 @@ from scipy.integrate import dblquad
 import pandas as pd
 
 import sys
-#sys.path.append('./python_modules/')
+#sys.path.append('./Dependencies/')
 from distribute_emis_func import read_gc_box_height, make_grid_LL
 
 import xarray as xr

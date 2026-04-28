@@ -5,7 +5,7 @@ Directions for GCC changes to add alumina tracer & chemistry
 This readme is a step-by-step changelog that accompanies Chapter 5 of
   thesis. Complementary is the geoschem documentation, https://geos-chem.readthedocs.io
   
-Commits in this section of the repo should reflect the clean file download followed
+Commits (or code blame) in this section of the repo should reflect the clean file download followed
   by changes below to follow along. Line names reference final file line numbers.
   
 This changelog does not express changes like output directory location or step time. It
