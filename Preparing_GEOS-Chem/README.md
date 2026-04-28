@@ -85,14 +85,32 @@ SECTION 3: ADD EMISSIONS
 
 SECTION 4: CHEMISTRY
 
->> turn off emissions, remove any alumina from restart file
+>> turn off emissions in HEMCO_Config.rc, remove any alumina from restart file
 >> add debug block to fullchem_mod.F90 lines 956 - 966 after Update_RCONST()
      --path from run directory CodeDir/src/GEOS-Chem/GeosCore/fullchem_mod.F90
      --this is linked symbolically to your GCClassic directory, making the path
        from this README.md to aerosol_mod.F90 ./GCClassic/src/GEOS-Chem/GeosCore/fullchem_mod.F90
->> add 'id_ALUM' for recognition, lines 41 and 2817, after SALA 
+       
+>> add 'id_ALUM' for recognition in fullchem_mod.F90, lines 41 and 2817, after SALA 
 >> recompile and re-run to check zero-alumina reactivity
      --log file should show 0 alumina concentration and low reactivity. for
-       the bin I choose the reactivity is:
+       the bin I choose (I, J, K in the debug statement) the reactivity is:
          8.0784296875956768E-026 ClNO3 + HCl --> LOx + Cl2 + HNO3
+
+part 2
+>> turn on emissions in HEMCO_Config.rc or add a large alumina input to restart file near debug bin
+>> add chemistry to fullchem_RateLawFuncs.F90, line 1230
+>> add H%ALUM identifier in fullchem_HetStateFuncs.F90, line 135 after OMOC, OPOA
+     --this file, and the next two, are at ./GCClassic/src/GEOS-Chem/KPP/fullchem/
+>> add H%ALUM identifier in commonIncludeVars.H, line 199 after xvol
+>> add id_ALUM identifier in fullchem_HetStateFuncs.F90, line 49 and 72 after SALA
+>> add id_ALUM identifier in fullchem_mod.F90, line 889 after SALA
+>> recompile and re-run, comparing reactivity debug for expected chemistry change
+     --after adding alumina chemistry and emissions the reactivity in the same bin
+       from above is now notably higher:
+         3.0343518158242012E-019 ClNO3 + HCl --> LOx + Cl2 + HNO3
+
+
+
+
     

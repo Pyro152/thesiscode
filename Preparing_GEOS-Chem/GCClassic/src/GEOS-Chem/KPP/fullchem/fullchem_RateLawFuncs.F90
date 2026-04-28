@@ -1227,6 +1227,9 @@ CONTAINS
     k    = 0.0_dp
     srMw = SR_MW(ind_ClNO3)
     !
+    gamma=0.02_dp
+    k=k+Ars_L1K( H%ALUM*53.707_dp , 0.14e-4_dp, gamma, srMw)
+    
     IF ( H%stratBox ) THEN
        !
        ! Rxn rate of ClNO3 + HCl on tropospheric sulfate in stratosphere

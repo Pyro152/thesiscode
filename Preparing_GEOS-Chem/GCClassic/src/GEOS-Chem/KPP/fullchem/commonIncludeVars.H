@@ -196,6 +196,7 @@
      REAL(dp) :: xH2O(14)       ! Aerosol water content [cm3/cm3]
      REAL(dp) :: xRadi(14)      ! Aerosol effective radius [cm]
      REAL(dp) :: xVol(14)       ! Aerosol specific volume [cm3/cm3]
+     REAL(dp) :: ALUM           ! Alumina concentration, units??
      !
      ! Additional fields only used by the Hg simulation
      !

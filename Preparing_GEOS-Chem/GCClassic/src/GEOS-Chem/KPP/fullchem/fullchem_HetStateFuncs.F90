@@ -46,7 +46,7 @@ CONTAINS
 ! !INTERFACE:
 !
   SUBROUTINE fullChem_SetStateHet( I,         J,         L,                  &
-                                   id_SALA,   id_SALAAL, id_SALC,            &
+                                   id_SALA, id_ALUM,  id_SALAAL, id_SALC,            &
                                    id_SALCAL, Input_Opt, State_Chm,          &
                                    State_Met, H,         RC                 )
 !
@@ -69,6 +69,7 @@ CONTAINS
     INTEGER,        INTENT(IN)    :: J          ! Lat (or Y-dim) gridbox index
     INTEGER,        INTENT(IN)    :: L          ! Vertical level index
     INTEGER ,       INTENT(IN)    :: id_SALA    ! Indices of SALA, SALAAL
+    INTEGER ,       INTENT(IN)    :: id_ALUM    ! Alumina index
     INTEGER,        INTENT(IN)    :: id_SALAAL  !  SALC, and SALCAL species
     INTEGER,        INTENT(IN)    :: id_SALC    !  in the State_Chm%Species
     INTEGER,        INTENT(IN)    :: id_SALCAL  !  object
@@ -131,6 +132,7 @@ CONTAINS
     H%xH2O(1:NA)    = State_Chm%AeroH2O(I,J,L,1:NA) * 1.0e-6_dp
     H%OMOC_POA      = State_Chm%OMOC_POA(I,J)
     H%OMOC_OPOA     = State_Chm%OMOC_OPOA(I,J)
+    H%ALUM          = State_Chm%Species(id_ALUM)%Conc(I,J,L)
 
     ! HSO3 and SO3 concentrations in cloud [mol/L]
     H%HSO3_aq       = State_Chm%HSO3_aq(I,J,L)
