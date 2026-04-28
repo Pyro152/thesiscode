@@ -109,7 +109,7 @@ VerboseOnCores:              root       # Accepted values: root all
     --> AEIC_SCALE_1990_2019   :       true      # Scale to year in 1990-2019
 
 #------ ALUMINA EMISSIONS -----------------------------------------------------
-    --> ALUMINA_TEST           :       true
+    --> ALUMINA_TEST           :       false
 
 # ----- SHIP EMISSIONS --------------------------------------------------------
     --> SHIP                   :       true

@@ -43,7 +43,7 @@ MODULE FullChem_Mod
   ! Species ID flags (and logicals to denote if species are present)
   INTEGER               :: id_OH,  id_HO2,  id_O3P,  id_O1D, id_CH4
   INTEGER               :: id_PCO, id_LCH4, id_NH3,  id_SO4
-  INTEGER               :: id_SALAAL, id_SALCAL, id_SALC, id_SALA
+  INTEGER               :: id_SALAAL, id_SALCAL, id_SALC, id_SALA, id_ALUM
   INTEGER               :: id_PSO4
 #ifdef TOMAS
   INTEGER               :: id_NK05, id_NK08, id_NK10, id_NK20
@@ -1032,6 +1032,19 @@ CONTAINS
 
        ! Update the array of rate constants
        CALL Update_RCONST()
+       
+       ! Add this printout (fill in the boxes)
+       IF ( I == 36 .and. J == 23 .and. L == 41 )  THEN
+           PRINT*, REPEAT( '#', 79 )
+           PRINT*, '### KPP DEBUG OUTPUT!'
+           PRINT*, '### Reaction rates at box ', I, J, L
+           PRINT*, REPEAT( '#', 79 )
+           DO N = 1, NREACT
+                PRINT*, RCONST(N), TRIM( ADJUSTL( EQN_NAMES(N) ) )
+            ENDDO
+           PRINT*, 'ALUMINA CONCENTRATION'
+           PRINT*, State_Chm%Species(id_ALUM)%Conc(I,J,L)
+       ENDIF
 
        !=====================================================================
        ! HISTORY (aka netCDF diagnostics)
@@ -3571,6 +3584,7 @@ CONTAINS
     id_OH       = Ind_( 'OH'           )
     id_SO4      = Ind_( 'SO4'          )
     id_SALA     = Ind_( 'SALA'         )
+    id_ALUM     = Ind_( 'ALUMINA'      )
     id_SALAAL   = Ind_( 'SALAAL'       )
     id_SALC     = Ind_( 'SALC'         )
     id_SALCAL   = Ind_( 'SALCAL'       )

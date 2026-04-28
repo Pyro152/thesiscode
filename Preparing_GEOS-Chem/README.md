@@ -70,5 +70,29 @@ SECTION 2: ADD ALUMINA
 >> re-compile and run to verify functionality
 
 
+-----------------------------------------------------------
 
+SECTION 3: ADD EMISSIONS
+
+>> generate emissions file (most of the Emissions_Inventory_Scripts do this)
+>> add header in HEMCO_Config.rc, lines 111 - 112
+>> add switch in HEMCO_Config.rc, lines 2829 - 2836
+     --you must point these switches to input files in your ExtData/HEMCO folder;
+       this is where you should put the generated emissions file.
+>> re-run to verify (you can check alumina concentration change in output restart/speciesconc files)
+
+------------------------------------------------------------
+
+SECTION 4: CHEMISTRY
+
+>> turn off emissions, remove any alumina from restart file
+>> add debug block to fullchem_mod.F90 lines 956 - 966 after Update_RCONST()
+     --path from run directory CodeDir/src/GEOS-Chem/GeosCore/fullchem_mod.F90
+     --this is linked symbolically to your GCClassic directory, making the path
+       from this README.md to aerosol_mod.F90 ./GCClassic/src/GEOS-Chem/GeosCore/fullchem_mod.F90
+>> add 'id_ALUM' for recognition, lines 41 and 2817, after SALA 
+>> recompile and re-run to check zero-alumina reactivity
+     --log file should show 0 alumina concentration and low reactivity. for
+       the bin I choose the reactivity is:
+         8.0784296875956768E-026 ClNO3 + HCl --> LOx + Cl2 + HNO3
     
