@@ -107,6 +107,10 @@ VerboseOnCores:              root       # Accepted values: root all
     --> AEIC2019_DAILY         :       false    # 2019 (daily data)
     --> AEIC2019_MONMEAN       :       true      # 2019 (monthly-mean data)
     --> AEIC_SCALE_1990_2019   :       true      # Scale to year in 1990-2019
+
+#------ ALUMINA EMISSIONS -----------------------------------------------------
+    --> ALUMINA_TEST           :       true
+
 # ----- SHIP EMISSIONS --------------------------------------------------------
     --> SHIP                   :       true
     --> CEDS_01x01_SHIP        :       true     # 1980-2019
@@ -201,7 +205,7 @@ VerboseOnCores:              root       # Accepted values: root all
     --> Monoterp to SOAS       :       0.050
     --> Othrterp to SOAP       :       0.050
     --> Othrterp to SOAS       :       0.050
-111     GFED                   : on    NO/CO/ALK4/ACET/MEK/ALD2/PRPE/C2H2/C2H4/C3H8/CH2O/C2H6/SO2/NH3/BCPO/BCPI/OCPO/OCPI/POG1/POG2/MTPA/BENZ/TOLU/XYLE/NAP/EOH/MOH/SOAP/FURA/PHEN/MVK/ISOP/ACTA/MGLY/GLYX/RCHO/HCOOH/ACR/STYR/C4H6
+111     GFED                   : on   NO/CO/ALK4/ACET/MEK/ALD2/PRPE/C2H2/C2H4/C3H8/CH2O/C2H6/SO2/NH3/BCPO/BCPI/OCPO/OCPI/POG1/POG2/MTPA/BENZ/TOLU/XYLE/NAP/EOH/MOH/SOAP/FURA/PHEN/MVK/ISOP/ACTA/MGLY/GLYX/RCHO/HCOOH/ACR/STYR/C4H6
     --> GFED4                  :       true
     --> GFED_daily             :       false
     --> GFED_3hourly           :       false
@@ -223,7 +227,7 @@ VerboseOnCores:              root       # Accepted values: root all
 115     DustAlk                : off   DSTAL1/DSTAL2/DSTAL3/DSTAL4
 117     Volcano                : on    SO2
     --> Volcano_Source         :       AeroCom
-    --> Volcano_Table          :       $ROOT/VOLCANO/v2024-04/$YYYY/$MM/so2_volcanic_emissions_Carns.$YYYY$MM$DD.rc
+    --> Volcano_Table          :       $ROOT/VOLCANO/v2024-04/2020/$MM/so2_volcanic_emissions_Carns.2020$MM$DD.rc
     --> Volcano_Climatology    :       $ROOT/VOLCANO/v2024-04/so2_volcanic_emissions_CARN_v202401.degassing_only.rc
 120     Inorg_Iodine           : on    HOI/I2
     --> Emit HOI               :       true
@@ -2823,6 +2827,15 @@ VerboseOnCores:              root       # Accepted values: root all
 )))AEIC2019_MONMEAN
 
 #==============================================================================
+# --- Alumina Emissions ---
+#==============================================================================
+(((ALUMINA_TEST
+0 ALUMINA_TEST_ALUMINA $ROOT/prod_baseline.nc reentry_al 2019/7/1/0 C xyz kg/m2/s ALUMINA - 1 1
+0 ALUMINA_NEWCONST $ROOT/prod_newconst_input.nc reentry_al 2019/7/1/0 C xyz kg/m2/s ALUMINA - 1 1
+#0 ALUMINA_TEST_ALUMINA $ROOT/Space_Stuff/$MM/byproduct_emis_all_4x5_47L_$YYYY$MM$DD.nc4 reentry_al 2020-2022/1-12/1-31/0-23 C xyz kg/m2/s ALUMINA - 1 1
+)))ALUMINA_TEST
+
+#==============================================================================
 # --- Emissions from decaying plants ---
 #==============================================================================
 (((DECAYING_PLANTS
@@ -3145,10 +3158,10 @@ VerboseOnCores:              root       # Accepted values: root all
 #==============================================================================
 (((OFFLINE_DUST
 (((.not.DustDead.or.DustGinoux
-0 EMIS_DST1 $ROOT/OFFLINE_DUST/v2021-08/0.5x0.625/$YYYY/$MM/dust_emissions_05.$YYYY$MM$DD.nc EMIS_DST1 1980-2022/1-12/1-31/* EFY xy kg/m2/s DST1 - 3 2
-0 EMIS_DST2 $ROOT/OFFLINE_DUST/v2021-08/0.5x0.625/$YYYY/$MM/dust_emissions_05.$YYYY$MM$DD.nc EMIS_DST2 1980-2022/1-12/1-31/* EFY xy kg/m2/s DST2 - 3 2
-0 EMIS_DST3 $ROOT/OFFLINE_DUST/v2021-08/0.5x0.625/$YYYY/$MM/dust_emissions_05.$YYYY$MM$DD.nc EMIS_DST3 1980-2022/1-12/1-31/* EFY xy kg/m2/s DST3 - 3 2
-0 EMIS_DST4 $ROOT/OFFLINE_DUST/v2021-08/0.5x0.625/$YYYY/$MM/dust_emissions_05.$YYYY$MM$DD.nc EMIS_DST4 1980-2022/1-12/1-31/* EFY xy kg/m2/s DST4 - 3 2
+0 EMIS_DST1 $ROOT/OFFLINE_DUST/v2021-08/0.5x0.625/2020/$MM/dust_emissions_05.2020$MM$DD.nc EMIS_DST1 2020/1-12/1-31/* C xy kg/m2/s DST1 - 3 2
+0 EMIS_DST2 $ROOT/OFFLINE_DUST/v2021-08/0.5x0.625/2020/$MM/dust_emissions_05.2020$MM$DD.nc EMIS_DST2 2020/1-12/1-31/* C xy kg/m2/s DST2 - 3 2
+0 EMIS_DST3 $ROOT/OFFLINE_DUST/v2021-08/0.5x0.625/2020/$MM/dust_emissions_05.2020$MM$DD.nc EMIS_DST3 2020/1-12/1-31/* C xy kg/m2/s DST3 - 3 2
+0 EMIS_DST4 $ROOT/OFFLINE_DUST/v2021-08/0.5x0.625/2020/$MM/dust_emissions_05.2020$MM$DD.nc EMIS_DST4 2020/1-12/1-31/* C xy kg/m2/s DST4 - 3 2
 ))).not.DustDead.or.DustGinoux
 )))OFFLINE_DUST
 
@@ -3156,25 +3169,25 @@ VerboseOnCores:              root       # Accepted values: root all
 # --- Offline biogenic VOC emissions ---
 #==============================================================================
 (((OFFLINE_BIOGENICVOC
-0 BIOGENIC_ACET      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/$YYYY/$MM/biovoc_05.$YYYY$MM$DD.nc ACET_MEGAN    1980-2022/1-12/1-31/* EFY xy kg/m2/s ACET -   4 2
-0 BIOGENIC_ALD2      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/$YYYY/$MM/biovoc_05.$YYYY$MM$DD.nc ALD2_MEGAN    1980-2022/1-12/1-31/* EFY xy kg/m2/s ALD2 -   4 2
-0 BIOGENIC_C2H4      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/$YYYY/$MM/biovoc_05.$YYYY$MM$DD.nc C2H4_MEGAN    1980-2022/1-12/1-31/* EFY xy kg/m2/s C2H4 -   4 2
-0 BIOGENIC_EOH       $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/$YYYY/$MM/biovoc_05.$YYYY$MM$DD.nc EOH_MEGAN     1980-2022/1-12/1-31/* EFY xy kg/m2/s EOH  -   4 2
-0 BIOGENIC_ISOP      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/$YYYY/$MM/biovoc_05.$YYYY$MM$DD.nc ISOP_MEGAN    1980-2022/1-12/1-31/* EFY xy kg/m2/s ISOP -   4 2
+0 BIOGENIC_ACET      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/2020/$MM/biovoc_05.2020$MM$DD.nc ACET_MEGAN    2020/1-12/1-31/* C xy kg/m2/s ACET -   4 2
+0 BIOGENIC_ALD2      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/2020/$MM/biovoc_05.2020$MM$DD.nc ALD2_MEGAN    2020/1-12/1-31/* C xy kg/m2/s ALD2 -   4 2
+0 BIOGENIC_C2H4      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/2020/$MM/biovoc_05.2020$MM$DD.nc C2H4_MEGAN    2020/1-12/1-31/* C xy kg/m2/s C2H4 -   4 2
+0 BIOGENIC_EOH       $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/2020/$MM/biovoc_05.2020$MM$DD.nc EOH_MEGAN     2020/1-12/1-31/* C xy kg/m2/s EOH  -   4 2
+0 BIOGENIC_ISOP      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/2020/$MM/biovoc_05.2020$MM$DD.nc ISOP_MEGAN    2020/1-12/1-31/* C xy kg/m2/s ISOP -   4 2
 0 BIOGENIC_ISOP_SOAP -                                                                                                            -             -                     -   -  -       SOAP 610 4 2
 0 BIOGENIC_ISOP_SOAS -                                                                                                            -             -                     -   -  -       SOAS 610 4 2
-0 BIOGENIC_LIMO      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/$YYYY/$MM/biovoc_05.$YYYY$MM$DD.nc LIMO_MEGAN    1980-2022/1-12/1-31/* EFY xy kg/m2/s LIMO -   4 2
+0 BIOGENIC_LIMO      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/2020/$MM/biovoc_05.2020$MM$DD.nc LIMO_MEGAN    2020/1-12/1-31/* C xy kg/m2/s LIMO -   4 2
 0 BIOGENIC_LIMO_SOAP -                                                                                                            -             -                     -   -  -       SOAP 611 4 2
 0 BIOGENIC_LIMO_SOAS -                                                                                                            -             -                     -   -  -       SOAS 611 4 2
-0 BIOGENIC_MOH       $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/$YYYY/$MM/biovoc_05.$YYYY$MM$DD.nc MOH_MEGAN     1980-2022/1-12/1-31/* EFY xy kg/m2/s MOH  -   4 2
-0 BIOGENIC_MTPA      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/$YYYY/$MM/biovoc_05.$YYYY$MM$DD.nc MTPA_MEGAN    1980-2022/1-12/1-31/* EFY xy kg/m2/s MTPA -   4 2
+0 BIOGENIC_MOH       $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/2020/$MM/biovoc_05.2020$MM$DD.nc MOH_MEGAN     2020/1-12/1-31/* C xy kg/m2/s MOH  -   4 2
+0 BIOGENIC_MTPA      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/2020/$MM/biovoc_05.2020$MM$DD.nc MTPA_MEGAN    2020/1-12/1-31/* C xy kg/m2/s MTPA -   4 2
 0 BIOGENIC_MTPA_SOAP -                                                                                                            -             -                     -   -  -       SOAP 611 4 2
 0 BIOGENIC_MTPA_SOAS -                                                                                                            -             -                     -   -  -       SOAS 611 4 2
-0 BIOGENIC_MTPO      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/$YYYY/$MM/biovoc_05.$YYYY$MM$DD.nc MTPO_MEGAN    1980-2022/1-12/1-31/* EFY xy kg/m2/s MTPO -   4 2
+0 BIOGENIC_MTPO      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/2020/$MM/biovoc_05.2020$MM$DD.nc MTPO_MEGAN    2020/1-12/1-31/* C xy kg/m2/s MTPO -   4 2
 0 BIOGENIC_MTPO_SOAP -                                                                                                            -             -                     -   -  -       SOAP 611 4 2
 0 BIOGENIC_MTPO_SOAS -                                                                                                            -             -                     -   -  -       SOAS 611 4 2
-0 BIOGENIC_PRPE      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/$YYYY/$MM/biovoc_05.$YYYY$MM$DD.nc PRPE_MEGAN    1980-2022/1-12/1-31/* EFY xy kg/m2/s PRPE -   4 2
-0 BIOGENIC_SESQ      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/$YYYY/$MM/biovoc_05.$YYYY$MM$DD.nc SESQ_MEGAN    1980-2022/1-12/1-31/* EFY xy kg/m2/s SESQ -   4 2
+0 BIOGENIC_PRPE      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/2020/$MM/biovoc_05.2020$MM$DD.nc PRPE_MEGAN    2020/1-12/1-31/* C xy kg/m2/s PRPE -   4 2
+0 BIOGENIC_SESQ      $ROOT/OFFLINE_BIOVOC/v2021-12/0.5x0.625/2020/$MM/biovoc_05.2020$MM$DD.nc SESQ_MEGAN    2020/1-12/1-31/* C xy kg/m2/s SESQ -   4 2
 0 BIOGENIC_SESQ_SOAP -                                                                                                            -             -                     -   -  -       SOAP 612 4 2
 0 BIOGENIC_SESQ_SOAS -                                                                                                            -             -                     -   -  -       SOAS 612 4 2
 )))OFFLINE_BIOGENICVOC
@@ -3184,13 +3197,13 @@ VerboseOnCores:              root       # Accepted values: root all
 #==============================================================================
 (((OFFLINE_SEASALT
 (((.not.SeaSalt
-0 SEASALT_SALA    $ROOT/OFFLINE_SEASALT/v2019-01/0.5x0.625/$YYYY/$MM/seasalt_05.$YYYY$MM$DD.nc SALA_TOTAL   1980-2022/1-12/1-31/* EFY xy kg/m2/s SALA    -   3 2
+0 SEASALT_SALA    $ROOT/OFFLINE_SEASALT/v2019-01/0.5x0.625/2020/$MM/seasalt_05.2020$MM$DD.nc SALA_TOTAL   2020/1-12/1-31/* C xy kg/m2/s SALA    -   3 2
 0 SEASALT_SALAAL  -                                                                                                              -            -                     -   -  -       SALAAL  615 3 2
 0 SEASALT_SALACL  -                                                                                                              -            -                     -   -  -       SALACL  616 3 2
 (((CalcBrSeasalt
 0 SEASALT_BrSALA  -                                                                                                              -            -                     -   -  -       BrSALA  617 3 2
 )))CalcBrSeasalt
-0 SEASALT_SALC    $ROOT/OFFLINE_SEASALT/v2019-01/0.5x0.625/$YYYY/$MM/seasalt_05.$YYYY$MM$DD.nc SALC_TOTAL   1980-2022/1-12/1-31/* EFY xy kg/m2/s SALC    -   3 2
+0 SEASALT_SALC    $ROOT/OFFLINE_SEASALT/v2019-01/0.5x0.625/2020/$MM/seasalt_05.2020$MM$DD.nc SALC_TOTAL   2020/1-12/1-31/* C xy kg/m2/s SALC    -   3 2
 0 SEASALT_SALCAL  -                                                                                                              -            -                     -   -  -       SALCAL  615 3 2
 0 SEASALT_SALCCL  -                                                                                                              -            -                     -   -  -       SALCCL  616 3 2
 (((CalcBrSeasalt
@@ -3204,7 +3217,7 @@ VerboseOnCores:              root       # Accepted values: root all
 #==============================================================================
 (((OFFLINE_SOILNOX
 (((.not.SoilNOx
-0 SOILNOX_NO  $ROOT/OFFLINE_SOILNOX/v2021-12/0.5x0.625/$YYYY/$MM/soilnox_05.$YYYY$MM$DD.nc SOIL_NOx 1980-2022/1-12/1-31/* EFY xy kg/m2/s NO - 3 2
+0 SOILNOX_NO  $ROOT/OFFLINE_SOILNOX/v2021-12/0.5x0.625/2020/$MM/soilnox_05.2020$MM$DD.nc SOIL_NOx 2020/1-12/1-31/* C xy kg/m2/s NO - 3 2
 ))).not.SoilNOx
 )))OFFLINE_SOILNOX
 
@@ -3777,7 +3790,7 @@ VerboseOnCores:              root       # Accepted values: root all
 # --- NOAA GMD monthly mean surface CH4 ---
 #==============================================================================
 (((GMD_SFC_CH4
-* NOAA_GMD_CH4 $ROOT/NOAA_GMD/v2023-10/monthly.gridded.surface.methane.1975-2022.1x1.nc SFC_CH4 1975-2022/1-12/1/0 RY xy ppbv * - 1 1
+* NOAA_GMD_CH4 $ROOT/NOAA_GMD/v2023-10/monthly.gridded.surface.methane.1975-2022.1x1.nc SFC_CH4 2020/1-12/1/0 C xy ppbv * - 1 1
 )))GMD_SFC_CH4
 
 #==============================================================================
