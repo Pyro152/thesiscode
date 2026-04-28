@@ -954,17 +954,17 @@ CONTAINS
        CALL Update_RCONST()
        
        ! Add this printout (fill in the boxes)
-       IF ( I == 36 .and. J == 23 .and. L == 41 )  THEN
-           PRINT*, REPEAT( '#', 79 )
-           PRINT*, '### KPP DEBUG OUTPUT!'
-           PRINT*, '### Reaction rates at box ', I, J, L
-           PRINT*, REPEAT( '#', 79 )
-           DO N = 1, NREACT
-                PRINT*, RCONST(N), TRIM( ADJUSTL( EQN_NAMES(N) ) )
-            ENDDO
-           PRINT*, 'ALUMINA CONCENTRATION'
-           PRINT*, State_Chm%Species(id_ALUM)%Conc(I,J,L)
-       ENDIF
+       !IF ( I == 36 .and. J == 23 .and. L == 41 )  THEN
+       !    PRINT*, REPEAT( '#', 79 )
+       !    PRINT*, '### KPP DEBUG OUTPUT!'
+       !    PRINT*, '### Reaction rates at box ', I, J, L
+       !    PRINT*, REPEAT( '#', 79 )
+       !    DO N = 1, NREACT
+       !         PRINT*, RCONST(N), TRIM( ADJUSTL( EQN_NAMES(N) ) )
+       !     ENDDO
+       !    PRINT*, 'ALUMINA CONCENTRATION'
+       !    PRINT*, State_Chm%Species(id_ALUM)%Conc(I,J,L)
+       !ENDIF
 
        !=====================================================================
        ! HISTORY (aka netCDF diagnostics)

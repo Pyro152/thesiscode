@@ -28,7 +28,7 @@ SECTION 1: CREATE RUN DIRECTORY
     --you answer a bunch of questions here, put settings. chemistry 
       requires full chemistry setup
       
->> compile
+>> compile (this step is repeated later)
 ```
     cd ~/Run_Directory_Name/build
     cmake ../CodeDir -DRUNDIR=..
@@ -41,14 +41,19 @@ SECTION 1: CREATE RUN DIRECTORY
      recommend for troubleshooting set a short sim time, a few hours to a day. This
      will require changing HISTORY.rc to not output monthly or whatever
      
->> dryrun and download data and run (for debugging
+>> dryrun to download data
 ```
     cd ..
     ./gcclassic --dryrun | tee log.dryrun
     ./download_data.py log.dryrun geoschem+http
+```
+
+>>  run (this step is repeated later)
+```
     ./gcclassic | tee test1.log
 ```
     --you may need to change the download_data.yml to the WUSTL server not AWS here
+    
 >> debug any errors here
     
     
@@ -109,8 +114,13 @@ part 2
      --after adding alumina chemistry and emissions the reactivity in the same bin
        from above is now notably higher:
          3.0343518158242012E-019 ClNO3 + HCl --> LOx + Cl2 + HNO3
+         ALUMINA CONCENTRATION
+           6.6023363863883342E-015
 
-
+part 3
+>> comment out the debug section, lines 956 - 966 in fullchem_mod.F90
+>> recompile and run to verify no more debug output
+>> GCClassic should now be ready to spin-up for alumina emissions/ozone impact simulations
 
 
     
