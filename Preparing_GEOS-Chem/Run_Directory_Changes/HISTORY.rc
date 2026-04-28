@@ -72,23 +72,23 @@ COLLECTIONS: 'Restart',
 # Available for all simulations
 #==============================================================================
   Restart.filename:           './Restarts/GEOSChem.Restart.%y4%m2%d2_%h2%n2z.nc4',
-  Restart.frequency:          00000100 000000
-  Restart.duration:           00000100 000000
+  Restart.frequency:          00000000 010000
+  Restart.duration:           00000000 010000
   Restart.mode:               'instantaneous'
   Restart.fields:             'SpeciesRst_?ALL?               ',
-                              'Chem_AeroH2OSNA                ',
-                              'Chem_ORVCsesq                  ',
-                              'Chem_H2O2AfterChem             ',
-                              'Chem_JOH                       ',
-                              'Chem_JNO2                      ',
-                              'Chem_SO2AfterChem              ',
-                              'Chem_DryDepNitrogen            ',
-                              'Chem_WetDepNitrogen            ',
-                              'Chem_KPPHvalue                 ',
-                              'Chem_StatePSC                  ',
-                              'Met_DELPDRY                    ',
-                              'Met_BXHEIGHT                   ',
-                              'Met_TropLev                    ',
+                              #'Chem_AeroH2OSNA                ',
+                              #'Chem_ORVCsesq                  ',
+                              #'Chem_H2O2AfterChem             ',
+                              #'Chem_JOH                       ',
+                              #'Chem_JNO2                      ',
+                              #'Chem_SO2AfterChem              ',
+                              #'Chem_DryDepNitrogen            ',
+                              #'Chem_WetDepNitrogen            ',
+                              #'Chem_KPPHvalue                 ',
+                              #'Chem_StatePSC                  ',
+                              #'Met_DELPDRY                    ',
+                              #'Met_BXHEIGHT                   ',
+                              #'Met_TropLev                    ',
 ::
 #==============================================================================
 # %%%%% THE Metrics COLLECTION %%%%%
@@ -121,8 +121,8 @@ COLLECTIONS: 'Restart',
 #                                    SpeciesConcMND [molec/cm3]
 #==============================================================================
   SpeciesConc.template:       '%y4%m2%d2_%h2%n2z.nc4',
-  SpeciesConc.frequency:      00000100 000000
-  SpeciesConc.duration:       00000100 000000
+  SpeciesConc.frequency:      00000000 010000
+  SpeciesConc.duration:       00000000 010000
   SpeciesConc.mode:           'time-averaged'
   SpeciesConc.fields:         'SpeciesConcVV_?ALL?           ',
                               ##'SpeciesConcMND_?ALL?          ',

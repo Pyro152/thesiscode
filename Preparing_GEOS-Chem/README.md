@@ -6,7 +6,10 @@ This readme is a step-by-step changelog that accompanies Chapter 5 of
   thesis. Complementary is the geoschem documentation, https://geos-chem.readthedocs.io
   
 Commits in this section of the repo should reflect the clean file download followed
-  by changes below. Line names reference final file line numbers.
+  by changes below to follow along. Line names reference final file line numbers.
+  
+This changelog does not express changes like output directory location or step time. It
+  also assumes your environment is already set up.
   
 -----------------------------------------------------------
 
@@ -35,11 +38,26 @@ SECTION 1: CREATE RUN DIRECTORY
 
 >> change geoschem_config.yml simulation time, HISTORY.rc outputs/frequency, 
      any other simulation settings; check geoschem documentation for more advice.
-     recommend for troubleshooting set a short runtime, a few hours to a day.
+     recommend for troubleshooting set a short sim time, a few hours to a day. This
+     will require changing HISTORY.rc to not output monthly or whatever
      
->> dryrun and download data
+>> dryrun and download data and run (for debugging
 ```
     cd ..
+    ./gcclassic --dryrun | tee log.dryrun
+    ./download_data.py log.dryrun geoschem+http
+    ./gcclassic | tee test1.log
+```
+    --you may need to change the download_data.yml to the WUSTL server not AWS here
+>> debug any errors here
     
+    
+    
+    
+----------------------------------------------------------
+
+SECTION 2: ADD ALUMINA
+
+>>
 
     

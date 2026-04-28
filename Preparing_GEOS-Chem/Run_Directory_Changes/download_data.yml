@@ -21,8 +21,8 @@ portals:
   geoschem+http:
     short_name: gh
     s3_bucket: False
-    remote: https://geos-chem.s3-us-west-2.amazonaws.com
-    #remote: http://geoschemdata.wustl.edu/ExtData
+    #remote: https://geos-chem.s3-us-west-2.amazonaws.com
+    remote: http://geoschemdata.wustl.edu/ExtData
     command: 'wget -r -np -nH -R "*.html" -N -P @PATH@ '
     quote: '"'
 
