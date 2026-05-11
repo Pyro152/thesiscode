@@ -1,6 +1,6 @@
-This folder contains environment activation scripts for the computers used in the thesis. Scripts are for convenience; users will 
+This folder contains environment activation scripts for the computers used in the thesis. Scripts are for example and convenience; users will 
 still need to configure their environment either with Spack or some other software. Most cluster administrators maintain the necessary
-software for gcclassic.gnu12.env
+software for gcclassic.gnu12.env, which is a slightly modified version of the official GCC version
 
 On Negishi, gcclassic.gnu12.env was the environment
 On home PC, the environment was gcclassic.home.env
